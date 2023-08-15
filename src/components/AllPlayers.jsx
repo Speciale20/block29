@@ -4,15 +4,30 @@ import { useState, useEffect } from "react";
 
 export default function AllPlayers() {
   const [players, setPlayers] = useState([]);
-  useEffect(() => {
-    async function fetchData() {
-      const data = await fetchPlayers();
-      setPlayers(data);
+  useEffect((players) => {
+    async function fetchPlayers() {
+      const result = await fetchPlayers();
+      setPlayers(result);
     }
   }, []);
   return (
     <>
-      <h1>AllPlayers Test</h1>
+      {players.map(() => {
+        return (
+          <>
+            <div>
+              <div key={player.id}></div>
+              <h4>{player.name}</h4>
+            </div>
+            <div className="player-image">
+              <img
+                src={player.imageUrl}
+                alt={`${player.name} - ${player.id}`}
+              />
+            </div>
+          </>
+        );
+      })}
     </>
   );
 }

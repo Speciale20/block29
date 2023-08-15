@@ -1,20 +1,26 @@
 
+
+
+
 //made a cohortName variable to replace "cohortName placeholder"
-const cohortName = '2302-ACC-CT-WEB-PT-B';
-// Use the APIURL variable for fetch requests
-const APIURL = `https://fsa-puppy-bowl.herokuapp.com/api/${cohortName}`;
-export default function index() {
+import AllPlayers from "../components/AllPlayers";
 
-
-
-  //fetches all players from the API
-  const fetchPlayers = async () => {
-    try {
-      const response = await fetch('${APIURL}/players/');
-      const result = await response.json();
-      console.log(result);
-    } catch (err) {
-      console.error(err);
+//fetches all players from the API
+const fetchPlayers = async () => {
+  try {
+    const response = await fetch('https://fsa-puppy-bowl.herokuapp.com/api/2302-acc-ct-web-pt-b/players');
+    const result = await response.json();
+    if (result.success && result.result && result.players) {
+      return result.players;
     }
+    else {
+      console.error('Error fetching players:', result.error);
+      return [];
+    }
+  } catch (error) {
+    console.log('Error fetching players:', error);
+    return [];
   }
 }
+
+export default fetchPlayers;
