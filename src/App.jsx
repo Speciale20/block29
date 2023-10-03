@@ -1,19 +1,28 @@
-import { Routes, Route, Link } from "react-router-dom";
-import SinglePlayer from "./components/SinglePlayer";
-import NewPlayerForm from "./components/NewPlayerForm";
-import AllPlayers from "./components/AllPlayers";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AllPlayers from "./pages/AllPlayers";
+import SinglePlayer from "./pages/SinglePlayer";
+import NewPlayerForm from "./pages/NewPlayerForm";
+import "./App.css";
 
-export default function App() {
+const App = () => {
+  // Assuming you're using React Router's useHistory hook
+  const history = useHistory();
+
   return (
-    <>
-      <div id="app-container">
+    <div className="app-container">
+      <Router>
         <Routes>
           <Route path="/" element={<AllPlayers />} />
           <Route path="/players/:id" element={<SinglePlayer />} />
-          <Route path="/newplayerform" element={<NewPlayerForm />} />
+          <Route
+            path="/newplayerform"
+            element={<NewPlayerForm history={history} />} // Pass history as a prop
+          />
         </Routes>
-        <h1>app</h1>
-      </div>
-    </>
+      </Router>
+    </div>
   );
-}
+};
+
+export default App;
