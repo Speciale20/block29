@@ -33,7 +33,7 @@ const NewPlayerForm = () => {
     <div>
       <h2>Add a New Player</h2>
       <form onSubmit={handleSubmit}>
-        {/* ... form inputs ... */}
+        {}
 
         <button type="submit">Submit</button>
       </form>

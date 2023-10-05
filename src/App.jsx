@@ -6,7 +6,6 @@ import NewPlayerForm from "./pages/NewPlayerForm";
 import "./App.css";
 
 const App = () => {
-  // Assuming you're using React Router's useHistory hook
   const history = useHistory();
 
   return (
@@ -17,7 +16,7 @@ const App = () => {
           <Route path="/players/:id" element={<SinglePlayer />} />
           <Route
             path="/newplayerform"
-            element={<NewPlayerForm history={history} />} // Pass history as a prop
+            element={<NewPlayerForm history={history} />}
           />
         </Routes>
       </Router>
